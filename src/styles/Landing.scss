@@ -1,0 +1,87 @@
+$search-height: 55px;
+
+.landing {
+    height: 100vh;
+    color: $color-accent;
+
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -99;
+        background: url('../assets/background.jpg') repeat;
+        filter: blur(5px) brightness(0.5);
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+
+        a {
+            color: $color-accent;
+            text-decoration: none;
+        }
+    }
+    
+    .header--button-add {
+        background: $color-bg-active;
+        color: $color-accent;
+        border: none;
+        border-radius: 5px;
+        padding: 0 10px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 18px;
+
+        &:hover {
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+    }
+
+    main {
+        position: relative;
+        top: calc(50% - 100px);
+    }
+
+    &--search-title {
+        font-size: 48px;
+        text-transform: uppercase;
+        color: $color-white;
+        padding-bottom: 20px;
+    }
+
+    &--search-form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-text {
+        background: transparentize($color: $color-bg, $amount: 0.4);
+        border: none;
+        border-radius: 5px;
+        height: $search-height;
+        width: 78%;
+        margin-right: 2%;
+        padding: 10px;
+        color: $color-white;
+    }
+
+    .submit-button {
+        width: 20%;
+        background: $color-accent;
+        color: $color-white;
+        border: none;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 18px;
+
+        &:hover {
+            filter: brightness(1.2);
+            cursor: pointer;
+        }
+    }
+}
