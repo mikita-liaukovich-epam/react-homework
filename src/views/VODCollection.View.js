@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { assetsPath, VODList } from "../models/VODCollection.DataModel";
+import PropTypes from 'prop-types';
 import Container from '../models/Container'
 
-export default class Header extends React.Component {
-
+export default class VODCollection extends React.Component {
     constructor(props) {
         super(props);
+        this.props = props;
+        this.assetsPath = this.props.assetsPath;
+        this.VODList = this.props.VODList;
     
         this.handleNavClick = this.handleNavClick.bind(this);
         this.handleSortClick = this.handleSortClick.bind(this);
@@ -19,7 +21,7 @@ export default class Header extends React.Component {
     render() {
         this.movieCards = [];
 
-        VODList.forEach(movie => {
+        this.VODList.forEach(movie => {
             this.movieCards.push(this.card(movie)) ;
         })
 
@@ -88,7 +90,7 @@ export default class Header extends React.Component {
     card(props) {
         return <a className="card" href="#">
             <div className="card--image-wrapper">
-                <img src={assetsPath + props.src} alt={props.title} />
+                <img src={this.assetsPath + props.src} alt={props.title} />
             </div>
             <div className="card--grid">
                 <h3>{props.title}</h3>
@@ -105,3 +107,8 @@ export default class Header extends React.Component {
         </footer>)
     }
 }
+
+VODCollection.propTypes = {
+    assetsPath: PropTypes.string,
+    VODList: PropTypes.array
+};
