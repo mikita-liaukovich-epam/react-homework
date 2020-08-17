@@ -1,0 +1,48 @@
+/*
+ * Main styles file with common properties and inport of styles for independent views
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+ $color-white: #eee;
+ $color-accent: #ff4343;
+ $color-bg: #222;
+ $color-bg-active: rgba(151, 151, 151, 0.5);
+
+ $container-width: 1024px;
+
+ @mixin hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+ }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    outline-color: $color-white;
+}
+
+body {
+    background: $color-bg;
+    color: $color-white;
+}
+
+.font_thin {
+    font-weight: 300;
+}
+
+.container {
+    width: $container-width;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+#root {
+    height: 100%;
+}
+
+@import './Landing.scss';
+@import './VODCollection.scss';
