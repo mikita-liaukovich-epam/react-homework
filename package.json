@@ -1,0 +1,39 @@
+{
+  "name": "react-homework",
+  "version": "2020.8.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "build-prod": "webpack --env.production",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicklevkovich/react-webpack-task.git"
+  },
+  "author": "Mikita Liaukovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicklevkovich/react-webpack-task/issues"
+  },
+  "homepage": "https://github.com/nicklevkovich/react-webpack-task#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router": "^5.2.0",
+    "redux": "^4.0.5",
+    "webpack": "^4.44.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel": "^6.23.0",
+    "babel-jest": "^26.2.2",
+    "jest": "^26.2.2",
+    "react-test-renderer": "^16.13.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
