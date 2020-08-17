@@ -36,8 +36,7 @@ $search-height: 55px;
         font-size: 18px;
 
         &:hover {
-            filter: brightness(1.2);
-            cursor: pointer;
+            @include hover;
         }
     }
 
@@ -80,8 +79,7 @@ $search-height: 55px;
         font-size: 18px;
 
         &:hover {
-            filter: brightness(1.2);
-            cursor: pointer;
+            @include hover;
         }
     }
 }

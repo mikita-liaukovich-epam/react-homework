@@ -72,9 +72,9 @@ export default class VODCollection extends React.Component {
     filterContainer() {
         return <div className="nav-filter">
             <p>Sort by</p>
-            <div class="dropdown">
-                <button class="dropbtn">Release Date</button>
-                <div class="dropdown-content" onClick={this.handleSortClick}>
+            <div className="dropdown">
+                <button className="dropbtn">Release Date</button>
+                <div className="dropdown-content" onClick={this.handleSortClick}>
                     <a href="#">A -&gt; Z</a>
                     <a href="#">Z -&gt; A</a>
                     <a href="#">Popularity</a>

@@ -53,6 +53,7 @@ $color-darker: #888;
     }
 
     .dropbtn {
+        position: relative;
         background-color: transparent;
         color: white;
         padding: 0 0 0 16px;
@@ -60,11 +61,29 @@ $color-darker: #888;
         border: none;
         text-transform: uppercase;
         font-weight: inherit;
+
+        &:after {
+            content: '▼';
+            color: $color-accent;
+            margin-left: 10px;
+        }
+
+        &:hover {
+            @include hover;
+        }
     }
     
     .dropdown {
         position: relative;
         display: inline-block;
+
+        &:hover {
+            @include hover;
+            
+            .dropdown-content {
+                display: block;
+            }
+        }
     }
     
     .dropdown-content {
@@ -85,12 +104,6 @@ $color-darker: #888;
             &:hover {
                 background-color: $color-accent;
             }
-        }
-    }
-    
-    .dropdown:hover {
-        .dropdown-content {
-            display: block;
         }
     }
 
