@@ -5,19 +5,14 @@ export default class ErrorBoundary extends React.Component {
     super(props);
     this.state = { error: null, errorInfo: null };
   }
-  
-  componentDidCatch(error, errorInfo) {
-    // Catch errors in any components below and re-render with error message
-    this.setState({
-      error: error,
-      errorInfo: errorInfo
-    })
-    // You can also log error messages to an error reporting service here
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true }
   }
-  
+
   render() {
-    if (this.state.errorInfo) {
-      // Error path
+    if (this.state.hasError) {
+
       return (
         <div>
           <h2>Something went wrong.</h2>
@@ -27,9 +22,9 @@ export default class ErrorBoundary extends React.Component {
             {this.state.errorInfo.componentStack}
           </details>
         </div>
-      );
+      )
     }
-    // Normally, just render children
+
     return this.props.children;
-  }  
+  }
 }
