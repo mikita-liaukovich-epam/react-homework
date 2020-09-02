@@ -1,0 +1,55 @@
+.form-section {
+  margin-bottom: 25px;
+}
+
+.form-title {
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.form-input {
+  @extend .font_thin;
+
+  width: 100%;
+  height: 50px;
+  border-radius: 3px;
+  border: none;
+  padding: 0px 10px;
+  background: $color-border;
+  color: $color-white;
+  font-size: 16px;
+
+  &_date {
+    &::-webkit-clear-button,
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      color: rgba($color: #000000, $alpha: 0.0);
+      display: block;
+      opacity: 1;
+      background: url('../assets/calendar.png') no-repeat;
+      width: 25px;
+      height: 25px;
+
+      &:hover {
+        @include hover;
+      }
+    }
+  }
+
+  &_select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background: url('../assets/arrow.png') 95% / 5% no-repeat $color-border;
+
+    &:hover {
+      @include hover;
+    }
+  }
+}

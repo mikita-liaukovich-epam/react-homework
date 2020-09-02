@@ -3,13 +3,11 @@
   color: $color-darker;
   text-decoration: none;
   transition: transform 0.25s;
-  position: relative;
 
   &:hover {
     color: $color-white;
     transform: translateY(-15px);
-    transition: transform 0.25s;
-    z-index: 1;
+    transition: transform 0.15s;
 
     .kebab-menu {
       display: block;
@@ -53,17 +51,57 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    &--content {
-      display: none;
+    &:hover {
+      @include hover;
     }
 
     &.active {
       .kebab-menu--content {
-        display: none;
-  
-        background: $color-border;
+        display: block;
       }
     }
 
+    &--content {
+      display: none;
+      position: relative;
+      background: $color-border;
+      width: 160px;
+      padding: 5px 25px;
+      border-radius: 5px;
+      transform: translate(-120px, -10px);
+      cursor: default;
+
+      @include shadow;
+
+      button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        color: $color-white;
+
+        &:hover {
+          @include hover;
+          color: $color-accent;
+        }
+      }
+
+      ul {
+        margin-top: 30px;
+        list-style: none;
+
+      }
+
+      li {
+        margin: 0 -25px;
+        padding: 5px 20px;
+
+        &:hover {
+          @include hover;
+          background: $color-accent;
+        }
+      }
+    }
   }
 }

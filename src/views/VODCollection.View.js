@@ -5,23 +5,47 @@ import Container from '../components/Container'
 import Heading from '../components/Heading'
 import CategoriesBar from '../components/CategoriesBar'
 import SorterDropdown from '../components/SorterDropdown'
-import Card from '../components/Card';
+import Card from '../components/Card.js'
+import DeletingModal from '../components/DeletingModal'
+import EditingModal from '../components/EditingModal'
 
 export default class VODCollection extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        this.assetsPath = this.props.assetsPath;
-        this.VODList = this.props.VODList;
+
+        this.handleToggleModal = this.handleToggleModal.bind(this);
+
+        this.state = {
+            VODCount: this.props.VODList.length,
+            VODCards: () => <React.Fragment> {
+                        this.props.VODList.map(movieData => {
+                            return Card({ ...movieData, assetsPath: this.props.assetsPath, modalHandler: this.handleToggleModal });
+                        })
+                    } </React.Fragment>,
+            isDeleteModalShown: false,
+            isEditModalShown: false,
+            modalOptions: {},
+        }
+    }
+
+    handleToggleModal(options) {
+        const { isDelete = false, isEdit = false, modalOptions = {} } = options;
+
+        if (isDelete) this.setState({
+            isDeleteModalShown: !this.state.isDeleteModalShown,
+            isEditModalShown: false,
+            modalOptions
+        })
+
+        if (isEdit) this.setState({
+            isEditModalShown: !this.state.isEditModalShown,
+            isDeleteModalShown: false,
+            modalOptions
+        })
     }
 
     render() {
-        this.movieCards = [];
-
-        this.VODList.forEach(movie => {
-            this.movieCards.push(Card({ ...movie, assetsPath: this.assetsPath }));
-        })
-
         return <div className="VODCollection">
             <Container>
                 <header className="font_thin">
@@ -29,14 +53,18 @@ export default class VODCollection extends React.Component {
                     <SorterDropdown />
                 </header>
                 <p className="match-count font_thin">
-                    <b>{this.movieCards.length}</b> movies found</p>
+                    <b>{this.state.VODCount}</b> movies found</p>
                 <div className="cards-container">
-                    {this.movieCards}
+                    {this.state.VODCards()}
                 </div>
             </Container>
             <footer>
                 <Heading />
             </footer>
+            { this.state.isDeleteModalShown &&
+                <DeletingModal onCloseRequest={() => this.handleToggleModal({ isDelete: true })}/> }
+            { this.state.isEditModalShown &&
+                <EditingModal modalOptions={this.state.modalOptions} onCloseRequest={() => this.handleToggleModal({ isEdit: true })}/> }
         </div>
     }
 }

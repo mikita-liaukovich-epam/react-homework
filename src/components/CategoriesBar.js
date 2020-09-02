@@ -1,4 +1,5 @@
 import React from 'react'
+import Genres from '../models/Genres.DataModel'
 
 function clickHandler(e) {
   const active = document.querySelector('.VODCollection nav .active')
@@ -8,10 +9,11 @@ function clickHandler(e) {
 
 export default () => {
   return (<nav onClick={clickHandler}>
-    <li className="active">All</li>
-    <li>Documentary</li>
-    <li>Comedy</li>
-    <li>Horror</li>
-    <li>Crime</li>
+    <li key="all" className="active">All</li>
+    {
+      Object.keys(Genres).map(genre =>
+        <li key={genre}>{genre}</li>
+      )
+    }
   </nav>)
 }

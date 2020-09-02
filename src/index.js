@@ -11,8 +11,8 @@ const rootElement = document.getElementById("root");
 
 ReactDOM.render(
   <ErrorBoundary>
-    {/* <Landing /> */}
-    <VODCollection assetsPath={assetsPath} VODList={VODList} />
+    <Landing />
+    {/* <VODCollection assetsPath={assetsPath} VODList={VODList} /> */}
   </ErrorBoundary>,
   rootElement
 );

@@ -1,33 +1,43 @@
 import React from "react";
+import Genres from '../models/Genres.DataModel'
 
-function clickHandler(e) {
+function handleClick(e) {
   e.preventDefault();
-  const active = document.body.querySelector(`.${e.target.classList[0]}.active`)
-  console.log(active, `.${e.target.classList[0]}.active`)
+  const active = document.body.querySelector(`.kebab-menu.active`)
+
   if (active) active.classList.remove('active');
+
   e.target.classList.add('active')
 }
 
 export default (props) => {
-  return (
-    <a className="card" href="#">
-      <div className="card--image-wrapper">
-        <img src={props.assetsPath + props.src} alt={props.title} />
+  const {
+    assetsPath,
+    src,
+    title,
+    date,
+    genre,
+    id: movieID,
+    modalHandler,
+  } = props;
+
+  return <a className="card" href="#">
+    <div className="card--image-wrapper">
+      <img src={assetsPath + src} alt={title} />
+    </div>
+    <div className="card--info">
+      <h3>{title}</h3>
+      <p>{date.year}</p>
+    </div>
+    <p>{Genres[genre]}</p>
+    <div className="kebab-menu" onClick={handleClick}>
+      <div className="kebab-menu--content">
+        <button onClick={handleClick}>✕</button>
+        <ul>
+          <li onClick={() => modalHandler({ isEdit: true, modalOptions: props })}>Edit</li>
+          <li onClick={() => modalHandler({ isDelete: true })}>Delete</li>
+        </ul>
       </div>
-      <div className="card--info">
-        <h3>{props.title}</h3>
-        <p>{props.year}</p>
-      </div>
-      <p>{props.genre}</p>
-      <div className="kebab-menu" onClick={clickHandler}>
-        <div className="kebab-menu--content">
-          <button onClick={clickHandler}></button>
-          <ul>
-            <li>Edit</li>
-            <li>Delete</li>
-          </ul>
-        </div>
-      </div>
-    </a>
-  );
+    </div>
+  </a>
 };
