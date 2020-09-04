@@ -1,13 +1,15 @@
-import React from "react"
-import Button from './Button'
-import Heading from './Heading'
+import React from 'react'
+import Heading from '../Heading'
 
-export default class DeletingModal extends React.Component {
+export default class BasicModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleOutsideClick = this.handleOutsideClick.bind(this);
+
+    this.onCloseRequest = this.props.onCloseRequest;
+    this.modalOptions = this.props.modalOptions;
   }
 
   componentDidMount() {
@@ -42,20 +44,17 @@ export default class DeletingModal extends React.Component {
     }
   }
 
-  render() {
-    const {
-      onCloseRequest,
-    } = this.props;
+  get modalName() {
+    return 'basic'
+  }
 
+  render() {
     return (
-      <div className="modal deleting-modal">
+      <div className={`modal ${this.modalName}-modal`}>
         <Heading />
-        <div className="modal-content">
-          <button className="modal-close" onClick={onCloseRequest}>✕</button>
-          <h2 className="modal-title">Delete movie</h2>
-          <p>Are you sure you want to delete this movie?</p>
-          <Button type="modal" style="fulfilled" onClick={onCloseRequest}>Confirm</Button>
-        </div>
+          <div className="modal-content">
+            { this.content() }
+          </div>
       </div>
     );
   };

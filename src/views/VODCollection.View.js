@@ -6,8 +6,8 @@ import Heading from '../components/Heading'
 import CategoriesBar from '../components/CategoriesBar'
 import SorterDropdown from '../components/SorterDropdown'
 import Card from '../components/Card.js'
-import DeletingModal from '../components/DeletingModal'
-import EditingModal from '../components/EditingModal'
+import DeletingModal from '../components/Modals/DeletingModal'
+import EditingModal from '../components/Modals/EditingModal'
 
 export default class VODCollection extends React.Component {
     constructor(props) {
@@ -62,7 +62,7 @@ export default class VODCollection extends React.Component {
                 <Heading />
             </footer>
             { this.state.isDeleteModalShown &&
-                <DeletingModal onCloseRequest={() => this.handleToggleModal({ isDelete: true })}/> }
+                <DeletingModal modalOptions={this.state.modalOptions} onCloseRequest={() => this.handleToggleModal({ isDelete: true })}/> }
             { this.state.isEditModalShown &&
                 <EditingModal modalOptions={this.state.modalOptions} onCloseRequest={() => this.handleToggleModal({ isEdit: true })}/> }
         </div>
@@ -72,9 +72,17 @@ export default class VODCollection extends React.Component {
 VODCollection.propTypes = {
     assetsPath: PropTypes.string,
     VODList: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
         title: PropTypes.string,
         genre: PropTypes.string,
-        year: PropTypes.number,
-        src: PropTypes.string
+        date: PropTypes.objectOf(PropTypes.shape({
+            year: PropTypes.string,
+            month: PropTypes.string,
+            day: PropTypes.day
+        })),
+        url: PropTypes.string,
+        src: PropTypes.string,
+        overview: PropTypes.string,
+        runtime: PropTypes.string
     }))
 };

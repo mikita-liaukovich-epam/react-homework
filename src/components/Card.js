@@ -35,7 +35,7 @@ export default (props) => {
         <button onClick={handleClick}>✕</button>
         <ul>
           <li onClick={() => modalHandler({ isEdit: true, modalOptions: props })}>Edit</li>
-          <li onClick={() => modalHandler({ isDelete: true })}>Delete</li>
+          <li onClick={() => modalHandler({ isDelete: true, modalOptions: props })}>Delete</li>
         </ul>
       </div>
     </div>

@@ -9,9 +9,10 @@ export default class Form extends React.Component {
   switchForm(param) {
     const {
       type,
-      info
+      info = {}
     } = this.props;
 
+    console.log(this.props, info)
     const Title = (props) => {
       return <h4 className="form-title">{props.text}</h4>
     }
@@ -31,7 +32,11 @@ export default class Form extends React.Component {
         </React.Fragment>
       }
       case 'date': {
-        const date = info.date.year + '-' + info.date.month + '-' + info.date.day;
+        let date;
+
+        if (info && info.date) {
+          date = info.date.year + '-' + info.date.month + '-' + info.date.day;
+        }
         return <React.Fragment>
           <Title text="Release Date" />
           <input className="form-input form-input_date" type="date" defaultValue={date} />
