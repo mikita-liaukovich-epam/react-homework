@@ -10,8 +10,12 @@ $color-darker: #999;
 $container-width: 1024px;
 
 @mixin hover {
-  filter: brightness(1.2);
-  cursor: pointer;
+  &:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+
+    @content;
+  }
 }
 
 @mixin shadow {
@@ -37,7 +41,6 @@ body {
 
 .container {
   width: $container-width;
-  height: 100%;
   margin: 0 auto;
   padding: 10px 0;
 }
@@ -58,4 +61,36 @@ footer {
     color: $color-accent;
     text-decoration: none;
   }
+}
+
+.button {
+  &_ghost {
+    background: $color-bg-active;
+    color: $color-accent;
+  }
+
+  &_filled {
+    background: $color-accent;
+
+    @include hover;
+  }
+
+  &_outlined {
+    background: $color-bg;
+    border: 1px solid $color-accent;
+    color: $color-accent;
+
+    @include hover;
+  }
+}
+
+.fixed-center-page {
+  header {
+    position: fixed;
+    top: 10px;
+    width: $container-width;
+  }
+
+  display: flex;
+  align-items: center;
 }

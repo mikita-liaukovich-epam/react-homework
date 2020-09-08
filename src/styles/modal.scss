@@ -50,24 +50,6 @@
   color: $color-white;
   text-transform: uppercase;
   float: right;
-
-  &_filled {
-    background: $color-accent;
-
-    &:hover {
-      @include hover;
-    }
-  }
-
-  &_outlined {
-    background: $color-bg;
-    border: 1px solid $color-accent;
-    color: $color-accent;
-
-    &:hover {
-      @include hover;
-    }
-  }
 }
 
 .modal-close {

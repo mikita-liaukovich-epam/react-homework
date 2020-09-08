@@ -4,7 +4,7 @@ function clickHandler(e) {
   console.log(`clicked on ${e.target.innerHTML}`)
 }
 
-export default () => {
+export default function SorterDropdown() {
   return <div className="nav-filter">
     <p>Sort by</p>
     <div className="dropdown">

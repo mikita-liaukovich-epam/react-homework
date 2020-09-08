@@ -5,7 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import VODCollection from "./views/VODCollection.View";
 import { assetsPath, VODList } from "./models/VODCollection.DataModel";
 
-import "./styles/index.scss";
+import "./index.scss";
 
 const rootElement = document.getElementById("root");
 

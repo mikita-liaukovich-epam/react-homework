@@ -1,5 +1,8 @@
-import React from "react";
+import React from 'react'
+import ReactDOM from 'react-dom'
 import Genres from '../models/Genres.DataModel'
+import DetailsPage from '../views/DetailsPage.View'
+import ErrorBoundary from './ErrorBoundary'
 
 function handleClick(e) {
   e.preventDefault();
@@ -10,7 +13,16 @@ function handleClick(e) {
   e.target.classList.add('active')
 }
 
-export default (props) => {
+function openDetailsPage(props) {
+  ReactDOM.render(
+    <ErrorBoundary>
+        <DetailsPage {...props}/>
+    </ErrorBoundary>,
+    document.getElementById("root")
+);
+}
+
+export default function Card(props) {
   const {
     assetsPath,
     src,
@@ -21,7 +33,7 @@ export default (props) => {
     modalHandler,
   } = props;
 
-  return <a className="card" href="#">
+  return <a className="card" href="javascript:void(0);" onClick={() => openDetailsPage(props)}>
     <div className="card--image-wrapper">
       <img src={assetsPath + src} alt={title} />
     </div>
@@ -34,8 +46,8 @@ export default (props) => {
       <div className="kebab-menu--content">
         <button onClick={handleClick}>✕</button>
         <ul>
-          <li onClick={() => modalHandler({ isEdit: true, modalOptions: props })}>Edit</li>
-          <li onClick={() => modalHandler({ isDelete: true, modalOptions: props })}>Delete</li>
+          <li onClick={() => modalHandler({ type: "edit", modalOptions: props })}>Edit</li>
+          <li onClick={() => modalHandler({ type: "delete", modalOptions: props })}>Delete</li>
         </ul>
       </div>
     </div>

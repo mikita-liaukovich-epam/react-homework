@@ -7,7 +7,7 @@ function clickHandler(e) {
   e.target.classList.add('active');
 }
 
-export default () => {
+export default function CategoriesBar() {
   return (<nav onClick={clickHandler}>
     <li key="all" className="active">All</li>
     {
