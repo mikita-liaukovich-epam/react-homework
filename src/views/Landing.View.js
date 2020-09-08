@@ -1,42 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import SearchForm from "../components/SearchForm";
 import AdditionModal from '../components/Modals/AdditionModal'
+import Button from '../components/Button'
 
-export default class Landing extends React.Component {
-  constructor(props) {
-    super(props);
+export default function Landing() {
+  const [showModal, setShowModal] = useState(false);
 
-    this.handleToggleModal = this.handleToggleModal.bind(this);
-
-    this.state = {
-      showModal: false
-    }
+  function handleToggleModal() {
+    setShowModal(!showModal)
   }
 
-  handleToggleModal() {
-    this.setState({
-      showModal: !this.state.showModal,
-    })
-  }
-
-  render() {
-    return (
-      <div className="landing">
-        <Container>
-          <header>
-            <Heading />
-            <button className="header--button-add" onClick={this.handleToggleModal}>+ Add movie</button>
-          </header>
-          <main>
-            <h2 className="font_thin landing--search-title">Find your movie</h2>
-            <SearchForm />
-          </main>
-        </Container>
-        { this.state.showModal &&
-                <AdditionModal onCloseRequest={() => this.handleToggleModal()}/> }
-      </div>
-    );
-  }
+  return (
+    <div className="landing fixed-center-page">
+      <Container>
+        <header>
+          <Heading />
+          <Button type="header" style="ghost" onClick={handleToggleModal}>+ Add movie</Button>
+        </header>
+        <main>
+          <h2 className="font_thin landing--search-title">Find your movie</h2>
+          <SearchForm />
+        </main>
+      </Container>
+      { showModal &&
+        <AdditionModal onCloseRequest={() => handleToggleModal()}/> }
+    </div>
+  );
 }

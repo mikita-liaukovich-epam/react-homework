@@ -1,6 +1,6 @@
 import React from "react";
 
-export default (props) => {
+export default function Button(props) {
   const {
     type,
     style,
@@ -9,5 +9,5 @@ export default (props) => {
     ...other
   } = props;
 
-  return <button type="button" className={`${type}-button ${type}-button_${style}`} {...other} onClick={onClick} />
+  return <button type="button" className={`${type}-button button_${style}`} {...other} onClick={onClick} />
 };

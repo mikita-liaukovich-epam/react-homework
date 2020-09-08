@@ -17,9 +17,9 @@ function clickHandler(e) {
   );
 }
 
-export default () => {
+export default function SearchForm() {
   return (
-    <form className="landing--search-form">
+    <form className="search-form">
       <input
         type="text"
         placeholder="What do you want to watch?"
