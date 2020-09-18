@@ -1,0 +1,86 @@
+.modal {
+  @extend .font_thin;
+
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: #222222aa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .heading {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+  }
+}
+
+.modal-content {
+  position: relative;
+  background: $color-bg;
+  border-radius: 7px;
+  padding: 40px 70px;
+  width: 600px;
+
+  @include shadow;
+}
+
+.modal-title {
+  @extend .font_thin;
+
+  color: $color-white;
+  text-transform: uppercase;
+  font-size: 40px;
+  padding-bottom: 25px;
+}
+
+.modal-button {
+  @extend .font_thin;
+
+  border: none;
+  min-width: 150px;
+  border-radius: 5px;
+  padding: 15px 30px;
+  margin: 25px 0 0 20px;
+  font-size: 18px;
+  color: $color-white;
+  text-transform: uppercase;
+  float: right;
+
+  &_filled {
+    background: $color-accent;
+
+    &:hover {
+      @include hover;
+    }
+  }
+
+  &_outlined {
+    background: $color-bg;
+    border: 1px solid $color-accent;
+    color: $color-accent;
+
+    &:hover {
+      @include hover;
+    }
+  }
+}
+
+.modal-close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  background: none;
+  border: none;
+  color: $color-white;
+  font-size: 25px;
+
+  &:hover {
+    @include hover;
+    color: $color-accent;
+  }
+}

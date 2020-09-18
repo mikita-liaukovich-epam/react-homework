@@ -1,0 +1,107 @@
+.card {
+  margin-bottom: 50px;
+  color: $color-darker;
+  text-decoration: none;
+  transition: transform 0.25s;
+
+  &:hover {
+    color: $color-white;
+    transform: translateY(-15px);
+    transition: transform 0.15s;
+
+    .kebab-menu {
+      display: block;
+    }
+  }
+
+  &--info {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      border: 1px solid $color-darker;
+      border-radius: 5px;
+      padding: 2px 15px;
+    }
+  }
+
+  &--image-wrapper {
+    width: 320px;
+    height: 420px;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .kebab-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border-radius: 20px;
+    background: url("../assets/kebab_menu_inverted.png");
+    background-color: $color-border;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      @include hover;
+    }
+
+    &.active {
+      .kebab-menu--content {
+        display: block;
+      }
+    }
+
+    &--content {
+      display: none;
+      position: relative;
+      background: $color-border;
+      width: 160px;
+      padding: 5px 25px;
+      border-radius: 5px;
+      transform: translate(-120px, -10px);
+      cursor: default;
+
+      @include shadow;
+
+      button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: none;
+        border: none;
+        color: $color-white;
+
+        &:hover {
+          @include hover;
+          color: $color-accent;
+        }
+      }
+
+      ul {
+        margin-top: 30px;
+        list-style: none;
+
+      }
+
+      li {
+        margin: 0 -25px;
+        padding: 5px 20px;
+
+        &:hover {
+          @include hover;
+          background: $color-accent;
+        }
+      }
+    }
+  }
+}

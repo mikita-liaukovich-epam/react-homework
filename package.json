@@ -1,13 +1,13 @@
 {
   "name": "react-homework",
-  "version": "2020.8.16",
+  "version": "2020.8.20",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "node_modules/.bin/webpack",
     "build:prod": "node_modules/.bin/webpack -p",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "redux": "^4.0.5",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
+    "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-merge": "^5.1.1"
   },
