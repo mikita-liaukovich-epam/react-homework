@@ -1,0 +1,41 @@
+$search-height: 133px;
+$search-form-height: 55px;
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-text {
+  background: transparentize($color: $color-bg, $amount: 0.4);
+  border: none;
+  border-radius: 5px;
+  height: $search-form-height;
+  width: 78%;
+  margin-right: 2%;
+  padding: 10px;
+  color: $color-white;
+}
+
+.submit-button {
+  width: 20%;
+  background: $color-accent;
+  color: $color-white;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+
+  @include hover;
+}
+
+.search-button {
+  width: 30px;
+  height: 30px;
+  margin: 4px;
+  border: none;
+  background: url('./assets/magnifier.svg');
+
+  @include hover;
+}

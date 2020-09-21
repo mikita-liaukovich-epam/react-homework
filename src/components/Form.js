@@ -1,27 +1,28 @@
 import React from 'react'
 import Genres from '../models/Genres.DataModel'
 
-export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Form(props) {
+  return (
+    <div className="form-section">
+    { switchForm() }
+    </div>
+  )
 
-  switchForm(param) {
+  function switchForm() {
     const {
       type,
       info = {}
-    } = this.props;
+    } = props;
 
-    console.log(this.props, info)
     const Title = (props) => {
       return <h4 className="form-title">{props.text}</h4>
     }
 
     const textFields = {
-      title: 'title',
+      title: 'Title',
       url: 'Movie URL',
-      overview: 'overview',
-      runtime: 'runtime',
+      overview: 'Overview',
+      runtime: 'Runtime',
     }
 
     switch (type) {
@@ -71,14 +72,4 @@ export default class Form extends React.Component {
       }
     }
   }
-
-  render() {
-    return (
-      <div className="form-section">
-      { this.switchForm() }
-      </div>
-    )
-  }
-
-
 }

@@ -6,5 +6,18 @@ header {
   a {
     color: $color-accent;
     text-decoration: none;
+
+    @include hover;
   }
+}
+
+.header-button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+
+  @include hover;
 }

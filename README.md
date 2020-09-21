@@ -1,8 +1,10 @@
 # React Homework
-by Mikita Liaukovich 
+by Mikita Liaukovich
 
-Changes made by 1.08:
-+ add webpack, babel, dev server, jest
-
-Changes made by 11.08:
-+ add markup, styles, animations, navigation, mocked content
+Changes made by:
+| Date  | Change |
+|---|---|
+|01.08|add webpack, babel, dev server, jest|
+|11.08|add markup, styles, animations, navigation, mocked content|
+|03.09|add edit, add, delete modals, fully linked data models with app|
+|08.09|refactor classes into hook-funcs, add details page|

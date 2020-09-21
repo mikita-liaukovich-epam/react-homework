@@ -1,0 +1,65 @@
+.details-page {
+  @include bluredBackground {
+    filter: blur(5px) brightness(0.1);
+  };
+
+  height: 100vh;
+
+  main {
+    position: relative;
+    top: calc(50% - #{$search-height});
+  }
+
+  &--grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  img {
+    width: 270px;
+  }
+
+  h2 {
+    @extend .font_thin;
+
+    font-size: 52px;
+    display: inline-block;
+  }
+
+  .content_row {
+    display: flex;
+    margin-top: 24px;
+  }
+
+  .content-rating {
+    margin-left: 16px;
+    width: 70px;
+    height: 70px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 100;
+    color: lawngreen;
+  }
+
+  .colored-text {
+    @extend .font_thin;
+
+    color: $color-accent;
+    font-size: 28px;
+
+    p + p {
+      margin-left: 36px;
+    }
+  }
+
+  .content--overview {
+    @extend .font_thin;
+
+    margin-top: 24px;
+  }
+}

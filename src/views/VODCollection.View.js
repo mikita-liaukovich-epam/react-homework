@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Container from '../components/Container'
@@ -9,64 +9,61 @@ import Card from '../components/Card.js'
 import DeletingModal from '../components/Modals/DeletingModal'
 import EditingModal from '../components/Modals/EditingModal'
 
-export default class VODCollection extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
+export default function VODCollection({ VODList, assetsPath }) {
+    const [VODCount, ] = useState(VODList.length);
+    const [VODCards, ] = useState(useCallback(
+        () => VODList.map(movieData => {
+            return Card({
+                ...movieData,
+                assetsPath: assetsPath,
+                modalHandler: handleToggleModal
+            })}
+        ),
+        [VODList, assetsPath]
+        ));
+    const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
+    const [isEditModalShown, setIsEditModalShown] = useState(false);
+    const [modalOptions, setModalOptions] = useState({});
 
-        this.handleToggleModal = this.handleToggleModal.bind(this);
+    function handleToggleModal(options) {
+        const { type, modalOptions = {} } = options;
 
-        this.state = {
-            VODCount: this.props.VODList.length,
-            VODCards: () => <React.Fragment> {
-                        this.props.VODList.map(movieData => {
-                            return Card({ ...movieData, assetsPath: this.props.assetsPath, modalHandler: this.handleToggleModal });
-                        })
-                    } </React.Fragment>,
-            isDeleteModalShown: false,
-            isEditModalShown: false,
-            modalOptions: {},
+        switch (type) {
+            case "delete": {
+                setIsDeleteModalShown(!isDeleteModalShown);
+                setIsEditModalShown(false);
+                break;
+            }
+            case "edit": {
+                setIsEditModalShown(!isEditModalShown);
+                setIsDeleteModalShown(false);
+                break;
+            }
         }
+
+        setModalOptions(modalOptions)
     }
 
-    handleToggleModal(options) {
-        const { isDelete = false, isEdit = false, modalOptions = {} } = options;
-
-        if (isDelete) this.setState({
-            isDeleteModalShown: !this.state.isDeleteModalShown,
-            isEditModalShown: false,
-            modalOptions
-        })
-
-        if (isEdit) this.setState({
-            isEditModalShown: !this.state.isEditModalShown,
-            isDeleteModalShown: false,
-            modalOptions
-        })
-    }
-
-    render() {
-        return <div className="VODCollection">
-            <Container>
-                <header className="font_thin">
-                    <CategoriesBar />
-                    <SorterDropdown />
-                </header>
-                <p className="match-count font_thin">
-                    <b>{this.state.VODCount}</b> movies found</p>
-                <div className="cards-container">
-                    {this.state.VODCards()}
-                </div>
-            </Container>
-            <footer>
-                <Heading />
-            </footer>
-            { this.state.isDeleteModalShown &&
-                <DeletingModal modalOptions={this.state.modalOptions} onCloseRequest={() => this.handleToggleModal({ isDelete: true })}/> }
-            { this.state.isEditModalShown &&
-                <EditingModal modalOptions={this.state.modalOptions} onCloseRequest={() => this.handleToggleModal({ isEdit: true })}/> }
-        </div>
-    }
+    return <div className="VODCollection">
+        <Container>
+            <header className="font_thin">
+                <CategoriesBar />
+                <SorterDropdown />
+            </header>
+            <p className="match-count font_thin">
+                <b>{VODCount}</b> movies found</p>
+            <div className="cards-container">
+                {VODCards}
+            </div>
+        </Container>
+        <footer>
+            <Heading />
+        </footer>
+        { isDeleteModalShown &&
+            <DeletingModal modalOptions={modalOptions} onCloseRequest={() => handleToggleModal({ type: "delete" })}/> }
+        { isEditModalShown &&
+            <EditingModal modalOptions={modalOptions} onCloseRequest={() => handleToggleModal({ type: "edit" })}/> }
+    </div>
 }
 
 VODCollection.propTypes = {
@@ -75,11 +72,13 @@ VODCollection.propTypes = {
         id: PropTypes.string,
         title: PropTypes.string,
         genre: PropTypes.string,
-        date: PropTypes.objectOf(PropTypes.shape({
+        date: PropTypes.shape({
             year: PropTypes.string,
             month: PropTypes.string,
-            day: PropTypes.day
-        })),
+            day: PropTypes.string
+        }),
+        rating: PropTypes.number,
+        duration: PropTypes.number,
         url: PropTypes.string,
         src: PropTypes.string,
         overview: PropTypes.string,

@@ -45,15 +45,13 @@
     height: 40px;
     padding: 5px;
     border-radius: 20px;
-    background: url("../assets/kebab_menu_inverted.png");
+    background: url("./assets/kebab_menu_inverted.png");
     background-color: $color-border;
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center;
 
-    &:hover {
-      @include hover;
-    }
+    @include hover;
 
     &.active {
       .kebab-menu--content {
@@ -81,8 +79,7 @@
         border: none;
         color: $color-white;
 
-        &:hover {
-          @include hover;
+        @include hover {
           color: $color-accent;
         }
       }
@@ -97,8 +94,7 @@
         margin: 0 -25px;
         padding: 5px 20px;
 
-        &:hover {
-          @include hover;
+        @include hover {
           background: $color-accent;
         }
       }
