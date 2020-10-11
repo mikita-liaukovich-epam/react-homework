@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
-import Heading from '../Heading'
+import Heading from '../Heading/Heading'
 
-export default function ModalBase({ onCloseRequest, content, modalName = 'basic' }) {
+import './Modal.scss';
+
+export default function ModalBase({ onCloseRequest, content, modalName = 'basic', children }) {
   useEffect(() => {
-    console.warn('mounted')
     window.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', handleOutsideClick, false);
 
     return () => {
       window.removeEventListener('keyup', handleKeyUp, false);
       document.removeEventListener('click', handleOutsideClick, false);
-      console.warn('unmounted')
     }
   }, [])
 
@@ -37,7 +37,7 @@ export default function ModalBase({ onCloseRequest, content, modalName = 'basic'
     <div className={`modal ${modalName}-modal`}>
       <Heading />
         <div className="modal-content">
-          { content }
+          { children }
         </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react'
+import './SorterDropdown.scss'
 
 function clickHandler(e) {
   console.log(`clicked on ${e.target.innerHTML}`)

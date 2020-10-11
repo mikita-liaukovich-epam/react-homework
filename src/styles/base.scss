@@ -1,26 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
 
-$color-white: #fff;
-$color-accent: #f65261;
-$color-bg: #232323;
-$color-bg-active: rgba(150, 150, 150, 0.5);
-$color-border: #333;
-$color-darker: #999;
-
-$container-width: 1024px;
-
-@mixin hover {
-  &:hover {
-    filter: brightness(1.2);
-    cursor: pointer;
-
-    @content;
-  }
-}
-
-@mixin shadow {
-  box-shadow: 1px 3px 10px $color-border;
-}
 
 * {
   padding: 0;
@@ -33,10 +12,6 @@ $container-width: 1024px;
 body {
   background: $color-bg;
   color: $color-white;
-}
-
-.font_thin {
-  font-weight: 300;
 }
 
 .container {

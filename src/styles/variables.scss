@@ -1,0 +1,42 @@
+$color-white: #fff;
+$color-accent: #f65261;
+$color-bg: #232323;
+$color-bg-active: rgba(150, 150, 150, 0.5);
+$color-border: #333;
+$color-darker: #999;
+
+$container-width: 1024px;
+
+$search-height: 133px;
+$search-form-height: 55px;
+
+@mixin hover {
+  &:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+
+    @content;
+  }
+}
+  
+@mixin shadow {
+  box-shadow: 1px 3px 10px $color-border;
+}
+
+@mixin bluredBackground() {
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -99;
+    background-size: cover;
+    filter: blur(5px) brightness(0.5);
+
+    @content;
+  }
+}
+
+.font_thin {
+  font-weight: 300;
+}

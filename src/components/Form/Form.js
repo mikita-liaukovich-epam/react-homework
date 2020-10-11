@@ -1,5 +1,7 @@
 import React from 'react'
-import Genres from '../models/Genres.DataModel'
+import Genres from '../../models/Genres.DataModel'
+
+import './Form.scss';
 
 export default function Form(props) {
   return (
@@ -54,7 +56,7 @@ export default function Form(props) {
                   options['selected'] = true
                 }
 
-                return <option value={genre} {...options}>{Genres[genre]}</option>
+                return <option key={genre} value={genre} {...options}>{Genres[genre]}</option>
               }
               )
             }

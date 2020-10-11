@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Genres from '../models/Genres.DataModel'
-import DetailsPage from '../views/DetailsPage.View'
-import ErrorBoundary from './ErrorBoundary'
+import Genres from '../../models/Genres.DataModel'
+import DetailsPage from '../../views/DetailsPage/DetailsPage'
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
+
+import './Card.scss'
 
 function handleClick(e) {
   e.preventDefault();

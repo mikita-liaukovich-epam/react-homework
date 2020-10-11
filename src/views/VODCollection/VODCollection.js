@@ -1,13 +1,15 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
-import Container from '../components/Container'
-import Heading from '../components/Heading'
-import CategoriesBar from '../components/CategoriesBar'
-import SorterDropdown from '../components/SorterDropdown'
-import Card from '../components/Card.js'
-import DeletingModal from '../components/Modals/DeletingModal'
-import EditingModal from '../components/Modals/EditingModal'
+import Container from '../../components/Container/Container'
+import Heading from '../../components/Heading/Heading'
+import CategoriesBar from '../../components/CategoriesBar/CategoriesBar'
+import SorterDropdown from '../../components/SorterDropdown/SorterDropdown'
+import Card from '../../components/Card/Card'
+import DeletingModal from '../../components/Modals/DeletingModal'
+import EditingModal from '../../components/Modals/EditingModal'
+
+import './VODCollection.scss'
 
 export default function VODCollection({ VODList, assetsPath }) {
     const [VODCount, ] = useState(VODList.length);

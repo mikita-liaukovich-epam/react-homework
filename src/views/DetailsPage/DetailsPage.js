@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import Container from '../components/Container'
-import Heading from '../components/Heading'
-import Genres from '../models/Genres.DataModel'
+import Container from '../../components/Container/Container'
+import Heading from '../../components/Heading/Heading'
+import Genres from '../../models/Genres.DataModel'
+
+import './DetailsPage.scss';
 
 export default function DetailsPage({ assetsPath, src, title, rating, genre, date, duration, overview }) {
   return (

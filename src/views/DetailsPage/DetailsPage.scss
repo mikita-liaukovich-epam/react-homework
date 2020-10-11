@@ -1,6 +1,9 @@
+@import '../../styles/variables.scss';
+
 .details-page {
   @include bluredBackground {
     filter: blur(5px) brightness(0.1);
+    background: url("../../assets/background.jpg") repeat;
   };
 
   height: 100vh;
