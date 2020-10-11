@@ -1,5 +1,5 @@
 import React from 'react'
-import Genres from '../models/Genres.DataModel'
+import Genres from '../../models/Genres.DataModel'
 
 function clickHandler(e) {
   const active = document.querySelector('.VODCollection nav .active')

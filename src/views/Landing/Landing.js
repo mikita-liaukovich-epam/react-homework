@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import Container from "../components/Container";
-import Heading from "../components/Heading";
-import SearchForm from "../components/SearchForm";
-import AdditionModal from '../components/Modals/AdditionModal'
-import Button from '../components/Button'
+import Container from "../../components/Container/Container";
+import Heading from "../../components/Heading/Heading";
+import SearchForm from "../../components/SearchForm/SearchForm";
+import AdditionModal from '../../components/Modals/AdditionModal'
+import Button from '../../components/Button/Button'
+
+import './Landing.scss'
 
 export default function Landing() {
   const [showModal, setShowModal] = useState(false);

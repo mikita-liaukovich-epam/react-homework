@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import VODCollection from "../views/VODCollection.View";
-import ErrorBoundary from "../components/ErrorBoundary";
-import { assetsPath, VODList } from "../models/VODCollection.DataModel";
+import VODCollection from "../../views/VODCollection/VODCollection";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { assetsPath, VODList } from "../../models/VODCollection.DataModel";
+
+import './SearchForm.scss';
 
 function clickHandler(e) {
   e.preventDefault();

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Landing from "../views/Landing.View";
-import ErrorBoundary from "./ErrorBoundary";
+import Landing from "../../views/Landing/Landing";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 function clickHandler() {
     const rootElement = document.getElementById("root");

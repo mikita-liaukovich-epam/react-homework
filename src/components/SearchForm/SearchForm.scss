@@ -1,5 +1,4 @@
-$search-height: 133px;
-$search-form-height: 55px;
+@import '../../styles/variables.scss';
 
 .search-form {
   display: flex;
@@ -35,7 +34,7 @@ $search-form-height: 55px;
   height: 30px;
   margin: 4px;
   border: none;
-  background: url('./assets/magnifier.svg');
+  background: url('../../assets/magnifier.svg');
 
   @include hover;
 }

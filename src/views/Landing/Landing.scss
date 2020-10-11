@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.landing {
+  height: 100vh;
+  color: $color-accent;
+
+  @include bluredBackground {
+    background: url("../../assets/background.jpg") repeat;
+  };
+
+  main {
+    position: relative;
+    top: calc(50% - #{$search-height});
+  }
+
+  &--search-title {
+    font-size: 48px;
+    text-transform: uppercase;
+    color: $color-white;
+    padding-bottom: 20px;
+  }
+}
