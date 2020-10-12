@@ -36,7 +36,7 @@ const VODList = [
     {
         id: "OO33320TH",
         title: "Kill Bill: Vol 2",
-        genre: "oscar",
+        genre: "drama",
         date: {
             year: "1994",
             month: "01",
@@ -84,7 +84,7 @@ const VODList = [
     {
         id: "MO328110TH",
         title: "Reservoir Dogs",
-        genre: "oscar",
+        genre: "drama",
         date: {
             year: "1994",
             month: "01",
