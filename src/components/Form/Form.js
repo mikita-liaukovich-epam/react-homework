@@ -1,7 +1,5 @@
 import React from 'react'
-import Genres from '../../models/Genres.DataModel'
-
-import './Form.scss';
+import { _genresFriendlyNames } from '../../models/Genres.DataModel'
 
 export default function Form(props) {
   return (
@@ -50,7 +48,7 @@ export default function Form(props) {
           <Title text="Genre" />
           <select className="form-input form-input_select" type="select" required >
             {
-              Object.keys(Genres).map(genre => {
+              Object.keys(_genresFriendlyNames).map(genre => {
                 const options = {};
                 if (genre === info.genre) {
                   options['selected'] = true

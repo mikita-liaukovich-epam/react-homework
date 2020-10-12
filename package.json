@@ -11,23 +11,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicklevkovich/react-webpack-task.git"
+    "url": "git+https://github.com/mikitaliaukovich/react-homework.git"
   },
   "author": "Mikita Liaukovich",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nicklevkovich/react-webpack-task/issues"
+    "url": "https://github.com/mikitaliaukovich/react-homework/issues"
   },
-  "homepage": "https://github.com/nicklevkovich/react-webpack-task#readme",
+  "homepage": "https://github.com/mikitaliaukovich/react-homework#readme",
   "dependencies": {
     "babel-loader": "^8.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
+    "redux-thunk": "^2.3.0",
+    "redux-devtools-extension": "2.13.8",
     "react-router": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "url-loader": "^4.1.0",
@@ -39,6 +39,7 @@
     "@babel/preset-react": "^7.10.4",
     "babel": "^6.23.0",
     "babel-jest": "^26.2.2",
+    "babel-polyfill": "^6.26.0",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",

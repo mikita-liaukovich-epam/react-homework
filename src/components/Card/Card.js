@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Genres from '../../models/Genres.DataModel'
+import { Provider } from 'react-redux'
+import store from '../../redux/store'
+import {_genresFriendlyNames} from '../../models/Genres.DataModel'
 import DetailsPage from '../../views/DetailsPage/DetailsPage'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
@@ -17,9 +19,11 @@ function handleClick(e) {
 
 function openDetailsPage(props) {
   ReactDOM.render(
-    <ErrorBoundary>
-        <DetailsPage {...props}/>
-    </ErrorBoundary>,
+    <Provider store={store}>
+      <ErrorBoundary>
+          <DetailsPage {...props}/>
+      </ErrorBoundary>
+    </Provider>,
     document.getElementById("root")
 );
 }
@@ -31,11 +35,11 @@ export default function Card(props) {
     title,
     date,
     genre,
-    id: movieID,
+    id,
     modalHandler,
   } = props;
 
-  return <a className="card" href="javascript:void(0);" onClick={() => openDetailsPage(props)}>
+  return <a key={id} className="card" href="javascript:void(0);" onClick={() => openDetailsPage(props)}>
     <div className="card--image-wrapper">
       <img src={assetsPath + src} alt={title} />
     </div>
@@ -43,7 +47,7 @@ export default function Card(props) {
       <h3>{title}</h3>
       <p>{date.year}</p>
     </div>
-    <p>{Genres[genre]}</p>
+    <p>{_genresFriendlyNames[genre]}</p>
     <div className="kebab-menu" onClick={handleClick}>
       <div className="kebab-menu--content">
         <button onClick={handleClick}>✕</button>

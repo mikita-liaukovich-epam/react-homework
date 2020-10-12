@@ -1,8 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import VODCollection from "../../views/VODCollection/VODCollection";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import { assetsPath, VODList } from "../../models/VODCollection.DataModel";
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
+import store from '../../redux/store'
+import VODCollection from "../../views/VODCollection/VODCollection"
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary"
+import { assetsPath, VODList } from "../../models/VODCollection.DataModel"
 
 import './SearchForm.scss';
 
@@ -12,9 +14,11 @@ function clickHandler(e) {
   const rootElement = document.getElementById("root");
 
   ReactDOM.render(
-    <ErrorBoundary>
-      <VODCollection assetsPath={assetsPath} VODList={VODList} />
-    </ErrorBoundary>,
+    <Provider store={store}>
+      <ErrorBoundary>
+        <VODCollection assetsPath={assetsPath} VODList={VODList} />
+      </ErrorBoundary>
+    </Provider>,
     rootElement
   );
 }
