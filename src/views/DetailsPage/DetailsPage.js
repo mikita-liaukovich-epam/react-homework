@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Container from '../../components/Container/Container'
 import Heading from '../../components/Heading/Heading'
-import { _genresFriendlyNames } from '../../models/Genres.DataModel'
+import { _genres } from '../../models/Genres.DataModel'
 
 import './DetailsPage.scss'
 
@@ -21,7 +22,7 @@ export default function DetailsPage({ assetsPath, src, title, rating, genre, dat
                 <h2>{title}</h2>
                 <div className="content-rating">{rating}</div>
               </div>
-              <p className="font_thin">{_genresFriendlyNames[genre]}</p>
+              <p className="font_thin">{_genres[genre]}</p>
               <div className="content_row colored-text">
                 <p>{date.year}</p>
                 <p>{duration + ' min'}</p>

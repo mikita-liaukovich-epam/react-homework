@@ -1,24 +1,12 @@
-const _genresFriendlyNames = {
-  all: "All",
-  documentary: "Documentary",
-  comedy: "Comedy",
-  horror: "Horror",
-  crime: "Crime",
-  drama: "Drama",
-  action: "Action",
-}
-
 const _genres = {
-  ALL: "FILMGENREALL",
-  DOCUMENTARY: "FILMGENREDOCUMENTARY",
-  COMEDY: "FILMGENRECOMEDY",
-  HORROR: "FILMGENREHORROR",
-  CRIME: "FILMGENRECRIME",
-  DRAMA: "FILMGENREDRAMA",
-  ACTION: "FILMGENREACTION",
+  DOCUMENTARY: "Documentary",
+  COMEDY: "Comedy",
+  HORROR: "Horror",
+  CRIME: "Crime",
+  DRAMA: "Drama",
+  ACTION: "Action",
 }
 
 export {
-  _genres,
-  _genresFriendlyNames,
+  _genres
 }

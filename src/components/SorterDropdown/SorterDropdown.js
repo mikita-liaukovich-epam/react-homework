@@ -1,19 +1,23 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { _filter } from '../../models/Filter.DataModel'
+import { fetchSort } from '../../redux/actions/Filter.actions'
+
 import './SorterDropdown.scss'
 
-function clickHandler(e) {
-  console.log(`clicked on ${e.target.innerHTML}`)
-}
-
 export default function SorterDropdown() {
+  const dispatch = useDispatch();
+
   return <div className="nav-filter">
     <p>Sort by</p>
     <div className="dropdown">
       <button className="dropbtn">Release Date</button>
-      <div className="dropdown-content" onClick={clickHandler}>
-        <a href="#">A -&gt; Z</a>
-        <a href="#">Z -&gt; A</a>
-        <a href="#">Popularity</a>
+      <div className="dropdown-content" onClick={e => dispatch(fetchSort(e.target.innerHTML))}>
+        {
+          Object.keys(_filter).map(type => {
+            return <a key={type} href="#">{_filter[type]}</a>
+          })
+        }
       </div>
     </div>
   </div>

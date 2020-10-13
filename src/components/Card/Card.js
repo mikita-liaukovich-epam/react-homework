@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from '../../redux/store'
-import {_genresFriendlyNames} from '../../models/Genres.DataModel'
+import {_genres} from '../../models/Genres.DataModel'
 import DetailsPage from '../../views/DetailsPage/DetailsPage'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
@@ -30,24 +30,25 @@ function openDetailsPage(props) {
 
 export default function Card(props) {
   const {
-    assetsPath,
-    src,
+    poster_path,
     title,
-    date,
-    genre,
+    release_date,
+    genres,
     id,
     modalHandler,
   } = props;
 
   return <a key={id} className="card" href="javascript:void(0);" onClick={() => openDetailsPage(props)}>
     <div className="card--image-wrapper">
-      <img src={assetsPath + src} alt={title} />
+      <img src={poster_path} alt={title} />
     </div>
     <div className="card--info">
-      <h3>{title}</h3>
-      <p>{date.year}</p>
+      <div className="title-wrapper">
+        <h3>{title}</h3>
+      </div>
+      <p>{release_date.substr(0, 4)}</p>
     </div>
-    <p>{_genresFriendlyNames[genre]}</p>
+    <p>{genres.join(', ')}</p>
     <div className="kebab-menu" onClick={handleClick}>
       <div className="kebab-menu--content">
         <button onClick={handleClick}>✕</button>
