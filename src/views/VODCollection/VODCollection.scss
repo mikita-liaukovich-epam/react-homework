@@ -17,39 +17,6 @@
     margin-top: 10px;
   }
 
-  nav {
-    text-decoration: none;
-    list-style: none;
-
-    li {
-      display: inline-block;
-      position: relative;
-      margin-right: 25px;
-      text-transform: uppercase;
-      height: 35px;
-      cursor: pointer;
-
-      &:before {
-        content: "";
-        position: absolute;
-        top: 35px;
-        height: 2px;
-        width: 100%;
-        display: none;
-      }
-
-      &:hover:before {
-        display: block;
-        background: $color-darker;
-      }
-
-      &.active:before {
-        display: block;
-        background: $color-accent;
-      }
-    }
-  }
-
   .nav-filter {
     text-transform: uppercase;
     display: flex;

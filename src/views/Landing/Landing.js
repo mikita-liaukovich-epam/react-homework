@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import Container from "../../components/Container/Container"
 import Heading from "../../components/Heading/Heading"
 import SearchForm from "../../components/SearchForm/SearchForm"
@@ -8,26 +9,24 @@ import Button from '../../components/Button/Button'
 import './Landing.scss'
 
 export default function Landing() {
-  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
-  function handleToggleModal() {
-    setShowModal(!showModal)
-  }
+  const { modal } = useSelector(state => state);
 
   return (
     <div className="landing fixed-center-page">
       <Container>
         <header>
           <Heading />
-          <Button type="header" style="ghost" onClick={handleToggleModal}>+ Add movie</Button>
+          <Button type="header" style="ghost" onClick={() => dispatch({ type: 'setState', payload: { modal: 'addition' }})}>+ Add movie</Button>
         </header>
         <main>
           <h2 className="font_thin landing--search-title">Find your movie</h2>
           <SearchForm />
         </main>
       </Container>
-      { showModal &&
-        <AdditionModal onCloseRequest={() => handleToggleModal()}/> }
+      { modal === 'addition' &&
+        <AdditionModal /> }
     </div>
   );
 }

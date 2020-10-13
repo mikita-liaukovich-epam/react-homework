@@ -1,15 +1,12 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import store from '../../redux/store'
+import { useDispatch, useSelector } from 'react-redux';
 import {_genres} from '../../models/Genres.DataModel'
-import DetailsPage from '../../views/DetailsPage/DetailsPage'
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 import './Card.scss'
 
 function handleClick(e) {
   e.preventDefault();
+  e.stopPropagation();
   const active = document.body.querySelector(`.kebab-menu.active`)
 
   if (active) active.classList.remove('active');
@@ -17,30 +14,24 @@ function handleClick(e) {
   e.target.classList.add('active')
 }
 
-function openDetailsPage(props) {
-  ReactDOM.render(
-    <Provider store={store}>
-      <ErrorBoundary>
-          <DetailsPage {...props}/>
-      </ErrorBoundary>
-    </Provider>,
-    document.getElementById("root")
-);
-}
-
 export default function Card(props) {
+  const dispatch = useDispatch();
+
+  const { modal } = useSelector(state => state);
+
   const {
     poster_path,
     title,
     release_date,
     genres,
     id,
-    modalHandler,
   } = props;
 
-  return <a key={id} className="card" href="javascript:void(0);" onClick={() => openDetailsPage(props)}>
+  let image;
+
+  return <a key={id} className="card" href="javascript:void(0);" onClick={() => dispatch({type: 'setState', payload: { data: props, currentView: 'DetailsPage' }})}>
     <div className="card--image-wrapper">
-      <img src={poster_path} alt={title} />
+      <img ref={el=>image=el} onError={()=>image.src='https://argamak-sher.uz/wp-content/uploads/no-image.png'} src={poster_path} alt={title} />
     </div>
     <div className="card--info">
       <div className="title-wrapper">
@@ -48,13 +39,13 @@ export default function Card(props) {
       </div>
       <p>{release_date.substr(0, 4)}</p>
     </div>
-    <p>{genres.join(', ')}</p>
+    <p className="card--genres">{genres.join(', ')}</p>
     <div className="kebab-menu" onClick={handleClick}>
       <div className="kebab-menu--content">
         <button onClick={handleClick}>✕</button>
         <ul>
-          <li onClick={() => modalHandler({ type: "edit", modalOptions: props })}>Edit</li>
-          <li onClick={() => modalHandler({ type: "delete", modalOptions: props })}>Delete</li>
+          <li onClick={() => dispatch({type: 'setState', payload: { modal: 'edit', modalOptions: props}})}>Edit</li>
+          <li onClick={() => dispatch({type: 'setState', payload: { modal: 'delete', modalOptions: props}})}>Delete</li>
         </ul>
       </div>
     </div>

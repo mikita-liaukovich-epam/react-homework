@@ -1,6 +1,8 @@
 import React from 'react'
 import { _genres } from '../../models/Genres.DataModel'
 
+import './Form.scss'
+
 export default function Form(props) {
   return (
     <div className="form-section">
@@ -11,7 +13,8 @@ export default function Form(props) {
   function switchForm() {
     const {
       type,
-      info = {}
+      info = {},
+      name,
     } = props;
 
     const Title = (props) => {
@@ -23,6 +26,7 @@ export default function Form(props) {
       url: 'Movie URL',
       overview: 'Overview',
       runtime: 'Runtime',
+      tagline: 'Tagline',
     }
 
     switch (type) {
@@ -33,20 +37,15 @@ export default function Form(props) {
         </React.Fragment>
       }
       case 'date': {
-        let date;
-
-        if (info && info.date) {
-          date = info.date.year + '-' + info.date.month + '-' + info.date.day;
-        }
         return <React.Fragment>
           <Title text="Release Date" />
-          <input className="form-input form-input_date" type="date" defaultValue={date} />
+          <input id={type} className="form-input form-input_date" type="date" defaultValue={info && info.release_date ? info.release_date : false} />
         </React.Fragment>
       }
       case 'genre': {
         return <React.Fragment>
           <Title text="Genre" />
-          <select className="form-input form-input_select" type="select" required >
+          <select id={type} className="form-input form-input_select" type="select" required >
             {
               Object.keys(_genres).map(genre => {
                 const options = {};
@@ -54,7 +53,7 @@ export default function Form(props) {
                   options['selected'] = true
                 }
 
-                return <option key={genre} value={genre} {...options}>{Genres[genre]}</option>
+                return <option key={genre} value={genre} {...options}>{_genres[genre]}</option>
               }
               )
             }
@@ -62,12 +61,13 @@ export default function Form(props) {
         </React.Fragment>
       }
       case 'title':
+      case 'tagline':
       case 'url':
       case 'overview':
       case 'runtime': {
         return <React.Fragment>
           <Title text={ textFields[type] } />
-          <input className="form-input" defaultValue={info[type]} placeholder={ textFields[type] }/>
+          <input id={type} className="form-input" defaultValue={info[type]} placeholder={ textFields[type] }/>
         </React.Fragment>
       }
     }

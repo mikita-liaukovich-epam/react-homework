@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import Heading from '../Heading/Heading'
 
 import './Modal.scss';
 
-export default function ModalBase({ onCloseRequest, content, modalName = 'basic', children }) {
+export default function ModalBase({ modalName = 'basic', children }) {
+  const dispatch = useDispatch()
+  const onCloseRequest = () => dispatch({ type: 'setState', payload: { modal: null, modalOptions: null }})
+
   useEffect(() => {
     window.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', handleOutsideClick, false);

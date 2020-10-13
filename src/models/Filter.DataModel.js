@@ -1,8 +1,6 @@
 const _filter = {
-  RELEASE_DATE: "Release date",
-  A_Z: "A to Z",
-  Z_A: "Z to A",
-  POPULAR: "Popularity",
+  asc: "A to Z",
+  desc: "Z to A",
 }
 
 export {
