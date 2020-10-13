@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Container from "../../components/Container/Container";
-import Heading from "../../components/Heading/Heading";
-import SearchForm from "../../components/SearchForm/SearchForm";
+import React, { useState } from "react"
+import Container from "../../components/Container/Container"
+import Heading from "../../components/Heading/Heading"
+import SearchForm from "../../components/SearchForm/SearchForm"
 import AdditionModal from '../../components/Modals/AdditionModal'
 import Button from '../../components/Button/Button'
 

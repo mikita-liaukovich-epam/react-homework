@@ -1,10 +1,18 @@
 const reducerViewData = (
-  state = { currentData: [] },
+  state = { 
+    totalAmount: 0,
+    data: [],
+    currentView: 'Landing',
+  },
   action,
 ) => {
   switch (action.type) {
   case 'setViewData':
-    return { currentData: action.payload };
+    return({ 
+      totalAmount: action.payload.totalAmount,
+      data: action.payload.data,
+      currentView: action.payload.currentView
+    });
   default:
     return state;
   }

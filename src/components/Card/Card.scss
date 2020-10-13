@@ -20,10 +20,17 @@
     display: flex;
     justify-content: space-between;
 
+    .title-wrapper {
+      max-width: 250px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
     p {
       border: 1px solid $color-darker;
       border-radius: 5px;
       padding: 2px 15px;
+      max-width: 320px;
     }
   }
 
@@ -32,7 +39,7 @@
     height: 420px;
     overflow: hidden;
     margin-bottom: 20px;
-
+    
     img {
       width: 100%;
     }

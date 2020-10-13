@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Container from '../../components/Container/Container'
@@ -11,18 +12,9 @@ import EditingModal from '../../components/Modals/EditingModal'
 
 import './VODCollection.scss'
 
-export default function VODCollection({ VODList, assetsPath }) {
-    const [VODCount, ] = useState(VODList.length);
-    const [VODCards, ] = useState(useCallback(
-        () => VODList.map(movieData => {
-            return Card({
-                ...movieData,
-                assetsPath: assetsPath,
-                modalHandler: handleToggleModal
-            })}
-        ),
-        [VODList, assetsPath]
-        ));
+export default function VODCollection() {
+    const { totalAmount, data } = useSelector(state => state.viewData);
+
     const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
     const [isEditModalShown, setIsEditModalShown] = useState(false);
     const [modalOptions, setModalOptions] = useState({});
@@ -53,9 +45,13 @@ export default function VODCollection({ VODList, assetsPath }) {
                 <SorterDropdown />
             </header>
             <p className="match-count font_thin">
-                <b>{VODCount}</b> movies found</p>
+                <b>{totalAmount}</b> movies found</p>
             <div className="cards-container">
-                {VODCards}
+                {data.map(movieData => Card({
+                        ...movieData,
+                        modalHandler: handleToggleModal
+                    }))
+                }
             </div>
         </Container>
         <footer>
@@ -70,20 +66,18 @@ export default function VODCollection({ VODList, assetsPath }) {
 
 VODCollection.propTypes = {
     assetsPath: PropTypes.string,
-    VODList: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string,
+    data: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number,
         title: PropTypes.string,
-        genre: PropTypes.string,
-        date: PropTypes.shape({
-            year: PropTypes.string,
-            month: PropTypes.string,
-            day: PropTypes.string
-        }),
-        rating: PropTypes.number,
-        duration: PropTypes.number,
-        url: PropTypes.string,
-        src: PropTypes.string,
+        tagline: PropTypes.string,
+        vote_average: PropTypes.number,
+        vote_count: PropTypes.number,
+        release_date: PropTypes.string,
+        poster_path: PropTypes.string,
         overview: PropTypes.string,
-        runtime: PropTypes.string
+        runtime: PropTypes.number,
+        budget: PropTypes.number,
+        revenue: PropTypes.revenue,
+        genres: PropTypes.arrayOf(PropTypes.string),
     }))
 };
