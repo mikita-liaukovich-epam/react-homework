@@ -1,7 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { _genres } from '../../models/Genres.DataModel'
-import { fetchGenre } from '../../redux/actions/Movie.actions'
+import { fetchMovies } from '../../redux/actions/Movie.actions'
+
+import './CategoriesBar.scss'
 
 export default function CategoriesBar() {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ export default function CategoriesBar() {
     if (active) active.classList.remove('active');
     e.target.classList.add('active');
   
-    dispatch(fetchGenre(e.target.innerText));
+    dispatch(fetchMovies(e.target.innerText));
   }
 
   return (<nav onClick={clickHandler}>

@@ -6,28 +6,34 @@ import { _genres } from '../../models/Genres.DataModel'
 
 import './DetailsPage.scss'
 
-export default function DetailsPage({ assetsPath, src, title, rating, genre, date, duration, overview }) {
+export default function DetailsPage(props) {
+  const dispatch = useDispatch();
+
+  const { data } = useSelector(state => state);
+
+  let image;
+
   return (
     <div className="details-page fixed-center-page">
       <Container>
         <header>
           <Heading />
-          <button className="search-button"></button>
+          <button className="search-button" onClick={() => dispatch({type: 'setState', payload: { currentView: 'Landing'}})}></button>
         </header>
         <main>
           <div className="details-page--grid">
-            <img src={assetsPath + src} alt={title} />
+            <img ref={el=>image=el} onError={()=>image.src='https://argamak-sher.uz/wp-content/uploads/no-image.png'} src={data.poster_path} alt={data.title} />
             <div className="details-page--content">
               <div className="content_row">
-                <h2>{title}</h2>
-                <div className="content-rating">{rating}</div>
+                <h2>{data.title}</h2>
+                <div className="content-rating">{data.vote_average}</div>
               </div>
-              <p className="font_thin">{_genres[genre]}</p>
+              <p className="font_thin">{data.genres.join(', ')}</p>
               <div className="content_row colored-text">
-                <p>{date.year}</p>
-                <p>{duration + ' min'}</p>
+                <p>{data.release_date.substr(0, 4)}</p>
+                <p>{data.runtime + ' min'}</p>
               </div>
-              <p className="content--overview">{overview}</p>
+              <p className="content--overview">{data.overview}</p>
             </div>
           </div>
         </main>

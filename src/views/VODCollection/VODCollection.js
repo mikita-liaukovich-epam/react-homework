@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import Container from '../../components/Container/Container'
@@ -13,30 +13,9 @@ import EditingModal from '../../components/Modals/EditingModal'
 import './VODCollection.scss'
 
 export default function VODCollection() {
-    const { totalAmount, data } = useSelector(state => state.viewData);
-
-    const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
-    const [isEditModalShown, setIsEditModalShown] = useState(false);
-    const [modalOptions, setModalOptions] = useState({});
-
-    function handleToggleModal(options) {
-        const { type, modalOptions = {} } = options;
-
-        switch (type) {
-            case "delete": {
-                setIsDeleteModalShown(!isDeleteModalShown);
-                setIsEditModalShown(false);
-                break;
-            }
-            case "edit": {
-                setIsEditModalShown(!isEditModalShown);
-                setIsDeleteModalShown(false);
-                break;
-            }
-        }
-
-        setModalOptions(modalOptions)
-    }
+    const dispatch = useDispatch();
+    
+    const { totalAmount, data, modal } = useSelector(state => state);
 
     return <div className="VODCollection">
         <Container>
@@ -47,20 +26,18 @@ export default function VODCollection() {
             <p className="match-count font_thin">
                 <b>{totalAmount}</b> movies found</p>
             <div className="cards-container">
-                {data.map(movieData => Card({
-                        ...movieData,
-                        modalHandler: handleToggleModal
-                    }))
+                {
+                    data.map(movieData => Card(movieData))
                 }
             </div>
         </Container>
         <footer>
             <Heading />
         </footer>
-        { isDeleteModalShown &&
-            <DeletingModal modalOptions={modalOptions} onCloseRequest={() => handleToggleModal({ type: "delete" })}/> }
-        { isEditModalShown &&
-            <EditingModal modalOptions={modalOptions} onCloseRequest={() => handleToggleModal({ type: "edit" })}/> }
+        { modal === 'delete' &&
+            <DeletingModal /> }
+        { modal === 'edit' &&
+            <EditingModal /> }
     </div>
 }
 

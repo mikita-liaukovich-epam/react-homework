@@ -30,15 +30,21 @@
       border: 1px solid $color-darker;
       border-radius: 5px;
       padding: 2px 15px;
-      max-width: 320px;
     }
+  }
+  
+  .card--genres {
+    max-width: 320px;
   }
 
   &--image-wrapper {
     width: 320px;
-    height: 420px;
+    height: 470px;
     overflow: hidden;
     margin-bottom: 20px;
+    background: $color-white;
+    display: flex;
+    align-items: center;
     
     img {
       width: 100%;

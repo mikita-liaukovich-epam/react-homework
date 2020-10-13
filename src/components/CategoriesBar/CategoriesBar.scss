@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+nav {
+  text-decoration: none;
+  list-style: none;
+  white-space: nowrap;
+  overflow-x: scroll;
+  background: linear-gradient(-90deg, rgba(255,255,255,0.3) 10%, transparent 30%, transparent);
+  max-width: 770px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    margin-right: 25px;
+    text-transform: uppercase;
+    height: 35px;
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 32px;
+      height: 2px;
+      width: 100%;
+      display: none;
+    }
+
+    &:hover:before {
+      display: block;
+      background: $color-darker;
+    }
+
+    &.active:before {
+      display: block;
+      background: $color-accent;
+    }
+  }
+}

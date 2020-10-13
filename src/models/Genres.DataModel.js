@@ -5,6 +5,9 @@ const _genres = {
   CRIME: "Crime",
   DRAMA: "Drama",
   ACTION: "Action",
+  FANTASY: "Fantasy",
+  ADVENTURE: "Adventure",
+  SCIFI: "Science Fiction",
 }
 
 export {
