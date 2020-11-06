@@ -18,7 +18,7 @@ export default function Landing() {
       <Container>
         <header>
           <Heading />
-          <Button type="header" style="ghost" onClick={() => dispatch({ type: 'setState', payload: { modal: 'addition' }})}>+ Add movie</Button>
+          <Button type="header" style="ghost" onClick={() => dispatch({ type: 'setState', payload: { modal: 'addition', modalOptions: {} }})}>+ Add movie</Button>
         </header>
         <main>
           <h2 className="font_thin landing--search-title">Find your movie</h2>

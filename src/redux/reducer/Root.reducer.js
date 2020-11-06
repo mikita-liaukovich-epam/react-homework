@@ -4,7 +4,7 @@ const reducerViewData = (
     data: [],
     currentView: 'Landing',
     modal: null,
-    modalOption: null,
+    modalOptions: null,
     selectedGenre: 'ALL',
     selectedSort: 0,
   },
