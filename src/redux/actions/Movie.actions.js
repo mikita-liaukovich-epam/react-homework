@@ -27,7 +27,7 @@ const addUpdateMovie = (data, isUpdate) => async (dispatch) => {
     },
     body: JSON.stringify(data),
   })
-  console.log(`Requested for movie ${isUpdate ? 'update' : 'creation'} was sent, but swagger is broken and response a Bad Request without a message`, res);
+  console.log(`Request for movie ${isUpdate ? 'update' : 'creation'} was sent, but swagger is broken and response a Bad Request without a message`, res);
   dispatch({ type: 'setState', payload: { modal: null }})
 }
 

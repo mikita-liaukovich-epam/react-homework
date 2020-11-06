@@ -14,7 +14,8 @@ export default function Form(props) {
     const {
       type,
       info = {},
-      name,
+      onChange,
+      onBlur
     } = props;
 
     const Title = (props) => {
@@ -39,13 +40,13 @@ export default function Form(props) {
       case 'date': {
         return <React.Fragment>
           <Title text="Release Date" />
-          <input id={type} className="form-input form-input_date" type="date" defaultValue={info && info.release_date ? info.release_date : false} />
+          <input onChange={onChange} onBlur={onBlur} name={type} id={type} className="form-input form-input_date" type="date" defaultValue={info && info.release_date ? info.release_date : false} />
         </React.Fragment>
       }
-      case 'genre': {
+      case 'genres': {
         return <React.Fragment>
           <Title text="Genre" />
-          <select id={type} className="form-input form-input_select" type="select" required >
+          <select onChange={onChange} onBlur={onBlur} name={type} id={type} className="form-input form-input_select" type="select" required >
             {
               Object.keys(_genres).map(genre => {
                 const options = {};
@@ -67,7 +68,7 @@ export default function Form(props) {
       case 'runtime': {
         return <React.Fragment>
           <Title text={ textFields[type] } />
-          <input id={type} className="form-input" defaultValue={info[type]} placeholder={ textFields[type] }/>
+          <input onChange={onChange} onBlur={onBlur} name={type} id={type} className="form-input" defaultValue={info[type]} placeholder={ textFields[type] }/>
         </React.Fragment>
       }
     }

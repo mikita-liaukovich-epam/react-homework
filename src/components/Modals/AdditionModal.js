@@ -1,7 +1,8 @@
 import React from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../Button/Button'
 import Form from '../Form/Form'
+import { Formik } from 'formik'
 import ModalBase from './ModalBase'
 import { addUpdateMovie } from '../../redux/actions/Movie.actions'
 
@@ -9,36 +10,33 @@ const $ = (id) => document.getElementById(id);
 
 export default function AdditionModal() {
   const dispatch = useDispatch();
+  const { modalOptions = undefined } = useSelector(state => state);
 
   const name = 'addition'
 
   return <ModalBase modalName={name}>
     <button className="modal-close" onClick={() => dispatch({ type: 'setState', payload: { modal: null }})}>✕</button>
     <h2 className="modal-title">Add movie</h2>
-    <Form type="title" />
-    <Form type="tagline" />
-    <Form type="date" />
-    <Form type="url" />
-    <Form type="genre" />
-    <Form type="overview" />
-    <Form type="runtime" />
-    <Button type="modal" style="filled" onClick={() => {
-      const options = {
-        title: $('title').value,
-        tagline: $('tagline').value,
-        vote_average: 0,
-        vote_count: 0,
-        release_date: $('date').value,
-        poster_path: '',
-        overview: $('overview').value,
-        budget: 0,
-        revenue: 0,
-        runtime: $('runtime').value,
-        genres: [$('genre').value],
-      }
-      console.log(options)
-      dispatch(addUpdateMovie(options))
-    }}>Save</Button>
-    <Button type="modal" style="outlined" onClick={() => dispatch({ type: 'setState', payload: { modal: null }})}>Reset</Button>
+    <Formik
+      initialValues={modalOptions}
+      onSubmit={(values, actions) => {
+        dispatch(addUpdateMovie(values))
+        actions.setSubmitting(false);
+      }}
+     >
+      {props => (
+        <form onSubmit={props.handleSubmit}>
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="title" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="tagline" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="date" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="url" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="genre" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="overview" />
+          <Form onChange={props.handleChange} onBlur={props.handleBlur} type="runtime" />
+          <Button buttonType="submit" type="modal" style="filled">Save</Button>
+          <Button type="modal" style="outlined" onClick={() => dispatch({ type: 'setState', payload: { modal: null }})}>Reset</Button>
+        </form>
+      )}
+     </Formik>
   </ModalBase>
 }

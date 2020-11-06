@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux"
 import Landing from "../Landing/Landing"
 import VODCollection from "../VODCollection/VODCollection"
 import DetailsPage from '../../views/DetailsPage/DetailsPage'
-// import { assetsPath, VODList } from "./models/VODCollection.DataModel"
 
 export default function App() {
   let { currentView } = useSelector((state) => state);
