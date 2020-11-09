@@ -1,5 +1,4 @@
 import {_genres } from '../../models/Genres.DataModel'
-import {useSelector} from 'react-redux'
 
 const baseUrl = 'http://localhost:4000/movies';
 
@@ -9,14 +8,13 @@ const fetchMovies = (type, sort) => async (dispatch) => {
   const url = `${baseUrl}?${sort ? `sortBy=title&sortOrder=${sort}&` : ''}searchBy=genres&search=${_genres[type] || ''}`;
   res = await fetch(url, { method: 'GET' })
   const body = await res.json()
-  console.log(res, body, url)
-  dispatch({ type: 'setState', payload: Object.assign(body, { currentView: 'VODCollection', selectedGenre: type }) })
+  dispatch({ type: 'setState', payload: Object.assign(body, { selectedGenre: type }) })
 };
 
 const searchMovie = (title) => async (dispatch) => {
   const res = await fetch(`${baseUrl}?searchBy=title&search=${title}`, { method: 'GET' })
   const body = await res.json()
-  dispatch({ type: 'setState', payload: Object.assign(body, { currentView: 'VODCollection' }) })
+  dispatch({ type: 'setState', payload: body})
 }
 
 const addUpdateMovie = (data, isUpdate) => async (dispatch) => {

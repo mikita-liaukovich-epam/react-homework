@@ -8,7 +8,6 @@ import { addUpdateMovie } from '../../redux/actions/Movie.actions'
 
 const $ = (id) => document.getElementById(id);
 
-
 export default function EditingModal() {
   const dispatch = useDispatch()
   const { modalOptions } = useSelector(state => state)

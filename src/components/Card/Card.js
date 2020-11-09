@@ -17,8 +17,6 @@ function handleClick(e) {
 export default function Card(props) {
   const dispatch = useDispatch();
 
-  const { modal } = useSelector(state => state);
-
   const {
     poster_path,
     title,
@@ -29,7 +27,7 @@ export default function Card(props) {
 
   let image;
 
-  return <a key={id} className="card" href="javascript:void(0);" onClick={() => dispatch({type: 'setState', payload: { data: props, currentView: 'DetailsPage' }})}>
+  return <a key={id} className="card" href="javascript:void(0);" onClick={() => dispatch({type: 'setState', payload: { data: props }})}>
     <div className="card--image-wrapper">
       <img ref={el=>image=el} onError={()=>image.src='https://argamak-sher.uz/wp-content/uploads/no-image.png'} src={poster_path} alt={title} />
     </div>

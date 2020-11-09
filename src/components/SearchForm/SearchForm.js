@@ -1,15 +1,14 @@
 import React from "react"
-import { useDispatch } from 'react-redux'
-import { searchMovie } from '../../redux/actions/Movie.actions'
+import { useHistory } from "react-router-dom";
 
 import './SearchForm.scss';
 
 export default function SearchForm() {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const clickHandler = (e) => {
     e.preventDefault()
-    dispatch(searchMovie(document.getElementById('searchField').value))
+    history.push(`search?value=${document.getElementById('searchField').value}`)
   }
 
   return (
