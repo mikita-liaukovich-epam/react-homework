@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
-// import App from "./views/App/App"
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary"
 import store from './redux/store'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

@@ -1,4 +1,4 @@
-const reducerViewData = (
+const reducer = (
   state = { 
     totalAmount: 0,
     data: [],
@@ -8,7 +8,7 @@ const reducerViewData = (
     selectedGenre: 'ALL',
     selectedSort: 0,
   },
-  action,
+  action = {},
 ) => {
   switch (action.type) {
   case 'setState':
@@ -39,4 +39,4 @@ const reducerViewData = (
   }
 };
 
-export default reducerViewData;
+export default reducer;

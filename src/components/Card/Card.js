@@ -1,5 +1,6 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import {_genres} from '../../models/Genres.DataModel'
 
 import './Card.scss'
@@ -15,6 +16,7 @@ function handleClick(e) {
 }
 
 export default function Card(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const {
@@ -27,7 +29,10 @@ export default function Card(props) {
 
   let image;
 
-  return <a key={id} className="card" href="javascript:void(0);" onClick={() => dispatch({type: 'setState', payload: { data: props }})}>
+  return <a key={id} className="card" href="javascript:void(0);" onClick={() => {
+      dispatch({type: 'setState', payload: { data: props }})
+      history.push(`/movie?${id}`)
+    }}>
     <div className="card--image-wrapper">
       <img ref={el=>image=el} onError={()=>image.src='https://argamak-sher.uz/wp-content/uploads/no-image.png'} src={poster_path} alt={title} />
     </div>

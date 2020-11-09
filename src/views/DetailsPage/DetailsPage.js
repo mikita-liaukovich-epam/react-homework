@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import Container from '../../components/Container/Container'
 import Heading from '../../components/Heading/Heading'
 import { _genres } from '../../models/Genres.DataModel'
@@ -7,7 +8,7 @@ import { _genres } from '../../models/Genres.DataModel'
 import './DetailsPage.scss'
 
 export default function DetailsPage(props) {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const { data } = useSelector(state => state);
 
@@ -18,7 +19,7 @@ export default function DetailsPage(props) {
       <Container>
         <header>
           <Heading />
-          <button className="search-button" onClick={() => dispatch({type: 'setState', payload: { currentView: 'Landing'}})}></button>
+          <button className="search-button" onClick={() => history.push('/')}></button>
         </header>
         <main>
           <div className="details-page--grid">
@@ -28,7 +29,7 @@ export default function DetailsPage(props) {
                 <h2>{data.title}</h2>
                 <div className="content-rating">{data.vote_average}</div>
               </div>
-              <p className="font_thin">{data.genres.join(', ')}</p>
+              <p className="font_thin">{data.genres && data.genres.join(', ')}</p>
               <div className="content_row colored-text">
                 <p>{data.release_date.substr(0, 4)}</p>
                 <p>{data.runtime + ' min'}</p>
