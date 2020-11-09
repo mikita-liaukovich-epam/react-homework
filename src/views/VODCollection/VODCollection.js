@@ -16,11 +16,10 @@ import './VODCollection.scss'
 
 export default function VODCollection() {
     const dispatch = useDispatch();
-    const query = new URLSearchParams(useLocation().search);
-
-    dispatch(searchMovie(query.get('value')));
-
+    const query = new URLSearchParams(useLocation().search);    
     const { totalAmount, data, modal } = useSelector(state => state);
+
+    if (!Array.isArray(data)) dispatch(searchMovie(query.get('value')));
 
     return <div className="VODCollection">
         <Container>
@@ -31,7 +30,7 @@ export default function VODCollection() {
             <p className="match-count font_thin">
                 <b>{totalAmount}</b> movies found</p>
             <div className="cards-container">
-                { data &&
+                { (data && Array.isArray(data)) &&
                     data.map(movieData => Card(movieData))
                 }
             </div>
