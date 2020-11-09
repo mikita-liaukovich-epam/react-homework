@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage --watchAll=false",
     "build": "node_modules/.bin/webpack",
     "build:prod": "node_modules/.bin/webpack -p",
     "start": "webpack-dev-server --open"
