@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<form
+  className="search-form"
+>
+  <input
+    className="search-text"
+    id="searchField"
+    placeholder="What do you want to watch?"
+    type="text"
+  />
+  <button
+    className="submit-button"
+    onClick={[Function]}
+    type="submit"
+  >
+    Search
+  </button>
+</form>
+`;
