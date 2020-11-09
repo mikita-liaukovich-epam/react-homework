@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom' 
 import PropTypes from 'prop-types'
 
 import Container from '../../components/Container/Container'
@@ -7,6 +8,7 @@ import Heading from '../../components/Heading/Heading'
 import CategoriesBar from '../../components/CategoriesBar/CategoriesBar'
 import SorterDropdown from '../../components/SorterDropdown/SorterDropdown'
 import Card from '../../components/Card/Card'
+import { searchMovie } from '../../redux/actions/Movie.actions'
 import DeletingModal from '../../components/Modals/DeletingModal'
 import EditingModal from '../../components/Modals/EditingModal'
 
@@ -14,7 +16,10 @@ import './VODCollection.scss'
 
 export default function VODCollection() {
     const dispatch = useDispatch();
-    
+    const query = new URLSearchParams(useLocation().search);
+
+    dispatch(searchMovie(query.get('value')));
+
     const { totalAmount, data, modal } = useSelector(state => state);
 
     return <div className="VODCollection">
@@ -26,7 +31,7 @@ export default function VODCollection() {
             <p className="match-count font_thin">
                 <b>{totalAmount}</b> movies found</p>
             <div className="cards-container">
-                {
+                { data &&
                     data.map(movieData => Card(movieData))
                 }
             </div>
