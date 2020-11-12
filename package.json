@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --watchAll=false",
+    "test": "jest --coverage",
     "build": "node_modules/.bin/webpack",
     "build:prod": "node_modules/.bin/webpack -p",
     "start": "webpack-dev-server --open"
@@ -21,6 +21,8 @@
   "homepage": "https://github.com/mikitaliaukovich/react-homework#readme",
   "dependencies": {
     "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
     "formik": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

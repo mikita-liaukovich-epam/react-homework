@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdditionModal should render correctly 1`] = `
+<div
+  className="modal addition-modal"
+>
+  <h1
+    className="heading"
+  >
+    <a
+      href="https://netflix.com"
+      target="_blank"
+    >
+      netflix
+    </a>
+    <span
+      className="font_thin"
+    >
+      <a
+        href="javascript:void(0);"
+        onClick={[Function]}
+      >
+        roulette
+      </a>
+    </span>
+  </h1>
+  <div
+    className="modal-content"
+  >
+    <button
+      className="modal-close"
+      onClick={[Function]}
+    >
+      ✕
+    </button>
+    <h2
+      className="modal-title"
+    >
+      Add movie
+    </h2>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Title
+        </h4>
+        <input
+          className="form-input"
+          id="title"
+          name="title"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Title"
+        />
+      </div>
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Tagline
+        </h4>
+        <input
+          className="form-input"
+          id="tagline"
+          name="tagline"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Tagline"
+        />
+      </div>
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Release Date
+        </h4>
+        <input
+          className="form-input form-input_date"
+          defaultValue={false}
+          id="date"
+          name="date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="date"
+        />
+      </div>
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Movie URL
+        </h4>
+        <input
+          className="form-input"
+          id="url"
+          name="url"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Movie URL"
+        />
+      </div>
+      <div
+        className="form-section"
+      />
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Overview
+        </h4>
+        <input
+          className="form-input"
+          id="overview"
+          name="overview"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Overview"
+        />
+      </div>
+      <div
+        className="form-section"
+      >
+        <h4
+          className="form-title"
+        >
+          Runtime
+        </h4>
+        <input
+          className="form-input"
+          id="runtime"
+          name="runtime"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Runtime"
+        />
+      </div>
+      <button
+        className="modal-button button_filled"
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        className="modal-button button_outlined"
+        onClick={[Function]}
+      >
+        Reset
+      </button>
+    </form>
+  </div>
+</div>
+`;

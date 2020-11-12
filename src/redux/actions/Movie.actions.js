@@ -3,7 +3,6 @@ import {_genres } from '../../models/Genres.DataModel'
 const baseUrl = 'http://localhost:4000/movies';
 
 const fetchMovies = (type, sort) => async (dispatch) => {
-  console.warn(type, sort)
   let res;
   const url = `${baseUrl}?${sort ? `sortBy=title&sortOrder=${sort}&` : ''}searchBy=genres&search=${_genres[type] || ''}`;
   res = await fetch(url, { method: 'GET' })
@@ -33,7 +32,6 @@ const deleteMovie = (id, selectedGenre) => async (dispatch) => {
   const res = await fetch(`${baseUrl}/${id}`, {
     method: 'DELETE'
   })
-  console.log('delete', res)
   dispatch(fetchMovies(selectedGenre))
 }
 
