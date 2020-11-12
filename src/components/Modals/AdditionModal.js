@@ -6,8 +6,6 @@ import { useFormik } from 'formik'
 import ModalBase from './ModalBase'
 import { addUpdateMovie } from '../../redux/actions/Movie.actions'
 
-const $ = (id) => document.getElementById(id);
-
 export default function AdditionModal() {
   const dispatch = useDispatch();
   const { modalOptions = undefined } = useSelector(state => state);
