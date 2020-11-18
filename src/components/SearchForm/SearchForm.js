@@ -17,14 +17,14 @@ export default function SearchForm() {
   }
 
   return (
-    <form className="search-form">
+    <form className="search-form" onSubmit={clickHandler}>
       <input
         type="text"
         placeholder="What do you want to watch?"
         className="search-text"
         id="searchField"
       />
-      <button type="submit" className="submit-button" onClick={clickHandler}>
+      <button type="submit" className="submit-button">
         Search
       </button>
     </form>

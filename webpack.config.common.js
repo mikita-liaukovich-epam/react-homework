@@ -1,17 +1,12 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
-const { merge } = require("webpack-merge");
 
-const TARGET = process.env.npm_lifecycle_event;
-const targetConfig = require(TARGET.includes("prod")
-  ? "./webpack.config.prod.js"
-  : "./webpack.config.dev.js");
-
-module.exports = merge(targetConfig, {
-  entry: ["babel-polyfill", "./src/index.js"],
+module.exports = {
+  entry: ["babel-polyfill", "./src/serverRenderer.js"],
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    globalObject: 'this'
   },
   devServer: {
     historyApiFallback: true,
@@ -40,9 +35,8 @@ module.exports = merge(targetConfig, {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: "./src/assets/", to: "assets/" },
-        { from: "./src/index.html", to: "" },
+        { from: "./src/assets/", to: "assets/" }
       ],
     }),
   ],
-});
+};
